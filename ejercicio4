@@ -3,6 +3,8 @@
 #
 
 int main (void){
+
+AD1PCFGL=0XFFFF;
 // salidas
 TRISB&=0x3FFF; //Ponemos cero en bit 14 y 15
 
