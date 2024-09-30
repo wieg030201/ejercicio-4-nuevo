@@ -41,6 +41,53 @@ periodo=10; // Si no es par, es decir, impar.
 if(ticks1<periodo){
 PORTB&=~(1<<14); //Encemos led 14
 }
+else{
+PORTB|=(1<<14); //Apagamos led 14
+}
+
+if(ticks2<5){
+PORTB&=~(1<<15); //Encendemos led 15
+}
+
+else{
+PORTB|=(1<<15); //Apagamos led 15
+}
+
+retardo(2500);
+
+ticks1++;
+ticks2++;
+
+if(ticks1>=2*periodo){
+ticks1=0; }
+
+if(ticks2> 19){
+ticks2=0;
+}
+}
+return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
