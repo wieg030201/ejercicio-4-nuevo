@@ -1,0 +1,76 @@
+#
+#
+#
+
+int main (void){
+// salidas
+TRISB&=0x3FFF; //Ponemos cero en bit 14 y 15
+
+//Entradas
+TRISB|=(1<<2); // Ponemos uno en el bit 2
+
+// Leds incialmente apagados
+PORTB|=0xC000;
+
+
+
+int ticks1=0;
+int ticks2=0;
+int pulso=0;
+int pulsador=1; //pulsador sin pulsar
+int pulsador_ant;
+int periodo;
+
+
+while(1){
+
+pulsador_ant=pulsador; // Guardamos el valor del pulsador más reciente para poder detectar el flanco.
+pulsador=(TRISB>>2)&(0x0001); // Conocemos el actual valor del pulsador.
+
+if(pulsador<pulsador_ant){ // Hemos pulsado el pulsador
+pulso ++; // pulso se incrementa una unidad señalando el número total de veces que ha sido pulsado
+}
+
+if(pulso%2==0){  // Si pulso es par
+periodo=2; }
+
+else {
+periodo=10; // Si no es par, es decir, impar.
+}
+
+if(ticks1<periodo){
+PORTB&=~(1<<14); //Encemos led 14
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
